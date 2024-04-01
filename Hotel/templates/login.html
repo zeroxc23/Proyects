@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'estilos.css' %}">
+</head>
+<body>
+    <header style="background-color: #7C1328; display: flex;">
+        <a href="#" class="logo">
+            <img src={% static 'img/logo.png' %} style="width: 12%;  height: auto; border-radius: 23px; margin-left:1%;">
+        </a>
+        <h1 style="margin-top: 15px; margin-left:17%; color: black;">Hotel Ares</h1>
+        <a href={% url 'index' %} style="margin-left: 40%; color: aliceblue; margin-top:32px;">Inicio</a>
+      </header>
+    
+    <div class="container" style="margin-top: 6%; ">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <form class="form-signin" method="post" action="{% url 'Login' %}">
+                    {% csrf_token %}
+                    <h1 class="h3 mb-3 font-weight-normal" style="text-decoration: underline;">Inicio de Sesión</h1>
+                    {% if error_message %}
+                        <p class="text-danger">{{ error_message }}</p>
+                    {% endif %}
+                    <div class="form-group">
+                        <label for="inputUsername" class="sr-only">Usuario</label>
+                        <input type="text" id="inputUsername" class="form-control" placeholder="Usuario" name="Username" required autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="sr-only">Contraseña</label>
+                        <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" name="Password" required>
+                    </div>
+                    <button class="btn btn-lg btn-danger btn-block" type="submit" style="color: black; text-decoration: underline;">Iniciar Sesión</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

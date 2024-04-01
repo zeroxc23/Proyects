@@ -1,0 +1,87 @@
+{% extends "./base.html" %}
+{% block title %} Restaurante {% endblock %}
+
+{% load static %}
+{% block body %}
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 ">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong class="text-dark">{{ message }}</strong>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <h2>Gestion de Restaurante</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action={% url 'registroRest' %} method="POST">{% csrf_token %}
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="txtId_Producto" name="txtId_Producto" 
+                        class="form-control" placeholder="Id_producto" minlength="1" maxlength="6" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="txtTipoBebida" name="txtTipoPlatillo" 
+                        class="form-control" placeholder="TipoPlatilo" minlength="1" maxlength="30" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="txtNombre" name="txtNombre" 
+                        class="form-control" placeholder="Nombre" maxlength="50" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="txtPrecio" name="txtPrecio" 
+                        class="form-control" placeholder="Precio" minlength="1"  required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="txtEstado" name="txtEstado" 
+                        class="form-control" placeholder="Estado"  maxlength="30" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8 ">
+        <h1>Listado de Platillos</h1>
+        <div class="table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th> Id_producto </th>
+                        <th> TipoPlatillo </th>
+                        <th> Nombre </th>
+                        <th> Precio </th>
+                        <th> Estado </th>
+                        <th> Id_servicio </th>
+                        <th colspan="">Procesos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for r in rest %}
+                    <tr>
+                        <td> {{r.Id_producto}} </td>
+                        <td> {{r.TipoPlatillo}} </td>
+                        <td> {{r.Nombre}} </td>
+                        <td> {{r.Precio}} </td>
+                        <td> {{r.Estado}} </td>
+                        <td> {{r.Id_servicio}} </td>
+                        <td><a href="edicionRest/{{r.Id_producto}}" class="btn btn-info">Editar</a></td>
+                        <td><a href="eliminarRest/{{r.Id_producto}}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

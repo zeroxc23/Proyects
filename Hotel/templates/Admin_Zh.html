@@ -1,0 +1,80 @@
+{% extends "./base.html" %}
+{% block title %} Zonas Humedas {% endblock %}
+
+{% load static %}
+{% block body %}
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 ">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong class="text-dark">{{ message }}</strong>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <h2>Gestion de Zonas Humedas</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action={% url 'registroZh' %} method="POST">{% csrf_token %}
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="txtId_Producto" name="txtId_Producto" 
+                        class="form-control" placeholder="Id_producto" minlength="1" maxlength="6" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="txtNombre" name="txtNombre" 
+                        class="form-control" placeholder="Nombre" maxlength="50" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="txtPrecio" name="txtPrecio" 
+                        class="form-control" placeholder="Precio" minlength="1"  required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" id="txtEstado" name="txtEstado" 
+                        class="form-control" placeholder="Estado"  maxlength="30" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8 ">
+        <h1>Listado de Zonas Humedas</h1>
+        <div class="table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th> Id_producto </th>
+                        <th> Nombre </th>
+                        <th> Precio </th>
+                        <th> Estado </th>
+                        <th> Id_servicio </th>
+                        <th colspan="">Procesos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for z in zh %}
+                    <tr>
+                        <td> {{z.Id_productoZH}} </td>
+                        <td> {{z.Nombre}} </td>
+                        <td> {{z.Precio}} </td>
+                        <td> {{z.Estado}} </td>
+                        <td> {{z.Id_servicio}} </td>
+                        <td><a href="edicionZh/{{z.Id_productoZH}}" class="btn btn-info">Editar</a></td>
+                        <td><a href="eliminarZh/{{z.Id_productoZH}}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

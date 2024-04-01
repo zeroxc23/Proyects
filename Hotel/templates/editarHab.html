@@ -1,0 +1,50 @@
+{% extends "./base.html" %}
+
+{% load static %}
+
+{% block title %} Habitaciones {% endblock %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>Edición Habitación</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action={% url 'editarHab' %} method="POST">{% csrf_token %}
+                    <div class="form-group py-2">
+                        <input type="number" id="txtIdHab" name="txtIdHab" class="form-control" value="{{habitacion.Id_habitacion}}" placeholder="Escriba el id" readonly>
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Tipo de habitación</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01" name="txtTipo">
+                            <option selected>Seleccione</option>
+                            {% for tipohab in tipohab %}
+                                <option value="{{tipohab.id_tipo_hab}}">{{tipohab.tipo}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelectEstado">Estado de habitación</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelectEstado" name="txtEstado">
+                            <option {% if habitacion.estado == 'Seleccione' %}selected{% endif %}>Seleccione</option>
+                            <option value="Disponible" {% if habitacion.estado == 'Disponible' %}selected{% endif %}>Disponible</option>
+                            <option value="Ocupado" {% if habitacion.estado == 'Ocupado' %}selected{% endif %}>Ocupado</option>
+                            <option value="Mantenimiento" {% if habitacion.estado == 'Mantenimiento' %}selected{% endif %}>Mantenimiento</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group py-2">
+                        <button type="submit" class="btn btn-success btn-block text-black">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
