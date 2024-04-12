@@ -2,81 +2,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-    <link rel="icon" href={% static 'img/icon.png' %}>
-    <title>Hotel Ares</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/prub.css' %}">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+  <link rel="icon" href={% static 'img/icon.png' %}>
+  <title>Hotel Ares</title>
+  
+
 </head>
 <body>
-    
-    <header style="background-color: #7C1328;">
-        <a href="#" class="logo">
-            <img src={% static 'img/logo.png' %}>
-        </a>
-        <a href={% url 'register' %} class="btn btn-primary" style="color: aliceblue;">Registrar Usuario</a>
-        <a href={% url 'Login' %} class="btn btn-primary" style="color: aliceblue;">Iniciar Sesión</a>
-        <h1>{{ message }}</h1>
-    </header>
-    
-    <div class="contenido" style="display: flex; flex-wrap: nowrap;  justify-content: space-between; align-items: start;">
-        <! -- Descripción --!>
-        <div class="text" style="font-size:15px; color: #7C1328; margin-top: 500px; ">
-            <h1>Hotel Ares</h1>
-            <br>
-            <h1>Comodidad sin precedentes</h1>
-            <br>
-            <h1>Hotel ubicado en Soacha, Cundinamarca. Dirigido por el sena.</h1>
-        </div>
-       
-        <! -- Logo --!>
-        <img src={% static 'img/logo.png' %} style="width: 500px; margin-right: 350px; border-radius: 70px; margin-top: 300px;">
-        
-    </div>
-    <! -- Gestión Servicios --!>
-    
-    <! -- Cards --!>
-    <div class="cards" style="display: flex; flex-wrap: nowrap; overflow-x: auto; justify-content: space-between; margin-top: 80px;  ">
-        <! -- Card 1 --!>
-        <div class="card" style="width: 20%; flex: 0 0 auto; margin-right: 10px; background-color: #7C1328;">
-            <img class="card-img-top" src={% static 'img/rest.jpg' %} alt="Card image cap" style="width: 100%; border-radius: 30px;">
-            <div class="card-body">
-              <h1 class="card-title">Restaurante</h1>
-              <a href="#" class="btn btn-primary" style="color: aliceblue;">Gestion Restaurante</a>
-            </div>
-          </div>
-          <! -- Card 2 --!>
-          <div class="card" style="width: 20%; flex: 0 0 auto; margin-right: 15px; background-color: #7C1328;">
-            <img class="card-img-top" src={% static 'img/bar.jpg' %} alt="Card image cap" style="width: 100%; border-radius: 30px;">
-            <div class="card-body">
-              <h1 class="card-title">Bar</h1>
-              <a href="#" class="btn btn-primary" style="color: aliceblue;">Gestion Bar</a>
-            </div>
-          </div>
-          <! -- Card 3 --!>
-          <div class="card" style="width: 20%; flex: 0 0 auto; margin-right: 15px; background-color: #7C1328;">
-            <img class="card-img-top" src={% static 'img/zh.jpg' %} alt="Card image cap" style="width: 100%; border-radius: 30px;">
-            <div class="card-body">
-              <h1 class="card-title">Zonas Humedas</h1>
-              <a href="#" class="btn btn-primary" style="color: aliceblue;">Gestion Zonas Humedas</a>
-            </div>
-          </div>
-    </div>
-<br>
+  <div class="container">
+    <! -- Navbar--!>
 
-<div class="footer" style="background-color: #7C1328; padding: 20px; text-align: center; color: white; margin-top: 5%;">
-  <h1 style="margin-bottom: 20px;">Contactos</h1>
-  <div class="imgs" style="display: flex; justify-content: center;">
-      <img src="{% static 'img/facebook.png' %}" alt="Facebook" style="width: 40px; margin: 0 20px;">
-      <img src="{% static 'img/twitter.png' %}" alt="Twitter" style="width: 40px; margin: 0 20px;">
-      <img src="{% static 'img/instagram.png' %}" alt="WhatsApp" style="width: 40px; margin: 0 20px;">
+    <div class="navbar">
+      <img src={% static 'img/logo.png' %} " class="logo">
+      <h1 class="animate__animated animate__fadeInDown" style="margin-left: 10px;"">Hotel Ares</h1>
+      <nav>
+        <ul>
+          <li><a href={% url 'Login' %}>Iniciar Sesión</a></li>
+        </ul>
+      </nav>
+      
+      <img src={% static 'img/icon.png' %}  class="menu-icon">
+    </div>
+    <! -- Row --!>
+    <div class="row">
+      <! -- Primer Col --!>
+      <div class="col-1">
+        <h2 class="animate__animated animate__fadeInLeft">Bienvenidos al Hotel Ares</h2>
+      
+        <h3 class="animate__animated animate__fadeInLeft" style="color: black;">Comodidad sin Precedentes</h3>
+       
+        <p class="animate__animated animate__fadeInLeft" style="color: black;">Conoce sobre nosotros </p>
+        <br>
+        <a href={% url 'Login' %} class="boton"> Reservar Ahora</a>
+      </div>
+      <! -- Segundo Col --!>
+    <div class="col-2">
+      <img src={% static 'img/image.png' %} class="controller">
+    </div>
+    </div>
+    <! -- Cards --!>
+    <div class="cards">
+      <div class="face front">
+        <img src={% static 'img/bar.jpg' %}>
+        <h3>Bar</h3>
+      </div>
+      <div class="face back"></div>
+    </div>
+    <div class="social-links">
+      <img src={% static 'img/facebook.png' %} >
+      <img src={% static 'img/twitter.png' %} >
+      <img src={% static 'img/instagram.png' %}>
+    </div>
   </div>
-</div>
 </body>
 </html>

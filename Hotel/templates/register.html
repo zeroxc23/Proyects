@@ -8,8 +8,21 @@
     <title>Registro de Usuario</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'estilos.css' %}">
+    <link rel="icon" href={% static 'img/icon.png' %}>
 </head>
 <body>
+    <style>
+        .btn {
+            color: black;
+            text-decoration: underline;
+            
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: rgb(208, 5, 5);
+        }
+    </style>
     <header style="background-color: #7C1328; display: flex;">
         <a href="#" class="logo">
             <img src={% static 'img/logo.png' %} style="width: 12%;  height: auto; border-radius: 23px; margin-left:1%;">
@@ -45,7 +58,7 @@
             <label for="id_contraseña">Contraseña:</label>
             <input type="password" class="form-control" id="id_contraseña" name="contraseña">
         </div>
-        <button class="btn btn-lg btn-danger btn-block" style="color: black; text-decoration: underline;" type="submit">Registrarse</button>
+        <button class="btn btn-lg btn-danger btn-block" style="color: black; " type="submit">Registrarse</button>
     </form>
 </div>
 </body>
