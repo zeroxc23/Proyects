@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{% static 'css/prub.css' %}">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="icon" href="{% static 'img/icon.png' %}">
   <title>Hotel Ares</title>
@@ -31,15 +31,16 @@
       <!-- Primer Col -->
       <div class="col-1">
         
-        <h2 class="animate__animated animate__fadeInLeft">Bienvenido al Hotel Ares</h2>
+        
+        <br>
         <h1 class="animate__animated animate__fadeInLeft">{{ message }}</h1>
-        <h3 class="animate__animated animate__fadeInLeft" style="color: black;">Aqui se le otorgara acceso a los datos de la aplicación</h3>
+        <h3 class="animate__animated animate__fadeInLeft" style="color: black;">En este espacio se le otorgara acceso a los datos de la aplicación</h3>
         <br>
         <a href="#" class="boton">Reservas</a>
       </div>
       <!-- Segundo Col -->
       <div class="col-2">
-        <img src="{% static 'img/Admin.jpg' %}" class="controller" style="margin-left: 200px; width:800px;" >
+        <img src="{% static 'img/Admin.jpg' %}" class="controller" style="margin-left: 200px; width:800px; border-radius: 100px;" >
       </div>
     </div>
     <!-- Cards -->
@@ -47,7 +48,7 @@
       <!-- Card 1 -->
       <div class="card">
         <div class="front">
-          <img src="{% static 'img/bar.jpg' %}" style="width:100%;" >
+          <img src="{% static 'img/bar.jpg' %}" style="width:100%; border-radius: 50%;" >
         </div>
         <div class="back">
           <a href={% url 'IndexBar' %} class="btn btn-primary" style="color: aliceblue;">Gestion Bar</a>
@@ -56,7 +57,7 @@
       <!-- Card 2 -->
       <div class="card">
         <div class="front">
-          <img src="{% static 'img/rest.jpg' %}" style="width:100%;" >
+          <img src="{% static 'img/rest.jpg' %}" style="width:100%; border-radius: 50%;" >
         </div>
         <div class="back back1">
           

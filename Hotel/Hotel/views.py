@@ -11,8 +11,14 @@ def index(request):
     return render(request, "Index.html", {'message': message})
 #Redirrección Cliente
 def indexUsu(request):
-    message = "Bienvenido Cliente"
-    return render(request, "IndexUsu.html",{'message': message})
+    if not request.user.is_authenticated:
+        return redirect('login')  
+    if request.user.is_staff:
+        return redirect('index')  
+    
+    username = request.user.username
+    message = f"Bienvenido al Hotel Ares, {username}"
+    return render(request, "IndexUsu.html", {'message': message})
 #Redirrección Usuarios y Login 
 def login(request):
     if request.method == 'POST':
@@ -21,21 +27,25 @@ def login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             auth_login(request, user)
+            request.session['username'] = user.username  
             if user.is_staff:  
                 return redirect('indexAdmin')
             else:
                 return redirect('indexUsu')
         else:
-            
             return render(request, 'login.html', {'error_message': 'Nombre de usuario o contraseña incorrectos.'})
     else:
         return render(request, 'login.html')
+
 #Redirrección Admin
 
 @login_required
 def indexAdmin(request):
-    message = "Bienvenido Administrador"
-    return render(request, "IndexAdmin.html", {'message': message})
+   if not request.user.is_staff:
+        return redirect('index')  
+   username = request.user.username
+   message = f"Bienvenido Administrador, {username}"
+   return render(request, "IndexAdmin.html", {'message': message})
 
 #Logoutç
 @logout_required
